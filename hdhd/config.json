@@ -1,0 +1,46 @@
+{
+    "name"       : "hello world",
+    "guid"       : "asc.{660634B7-293D-484C-B478-93A96A46F080}",
+    "baseUrl"    : "",
+    "variations" : [
+        {
+            "description"         : "hello world",
+            "url"                 : "index.html",
+            "icons"               : ["resources/img/icon.png", "resources/img/icon@2x.png"],
+            "isViewer"            : false,
+            "EditorsSupport"      : ["word"],
+            "isVisual"            : false,
+            "isModal"             : true,
+            "isInsideMode"        : false,
+            "initDataType"        : "none",
+            "initData"            : "",
+            "isUpdateOleOnResize" : true,
+            "isSystem"        : true,
+			
+            "buttons"             : []
+        },
+        {
+            "description"         : "About",
+            "url"                 : "index_about.html",
+            "icons"               : ["resources/img/icon.png", "resources/img/icon@2x.png"],
+            "isViewer"            : false,
+            "EditorsSupport"      : ["word"],
+            "isVisual"            : true,
+            "isModal"             : true,
+            "isSystem"        : true,
+			
+            "isInsideMode"        : false,
+            "initDataType"        : "none",
+            "initData"            : "",
+            "isUpdateOleOnResize" : true,
+            "buttons"         : [
+                {
+                    "text": "Ok",
+                    "primary": true
+                }
+            ],
+
+            "size" : [392, 147]
+        }
+    ]
+}
