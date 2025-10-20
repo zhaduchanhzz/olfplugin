@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Iframe Processor</title>
+</head>
+<body>
+  <h4>Iframe đang chờ dữ liệu...</h4>
+  <div id="iframeOutput"></div>
+
+  <script>
+    window.addEventListener('message', (event) => {
+      if (event.data?.type === 'PROCESS_TEXT') {
+        const text = event.data.text;
+
+        // 👇 Xử lý logic ở đây (ví dụ: đảo ngược chuỗi)
+        const processed = text.split('').reverse().join('');
+
+        // Hiển thị trong iframe
+        document.getElementById('iframeOutput').textContent = processed;
+
+        // Gửi ngược lại cho parent
+        event.source.postMessage(
+          { type: 'PROCESSED_TEXT', result: processed },
+          event.origin
+        );
+      }
+    });
+  </script>
+</body>
+</html>

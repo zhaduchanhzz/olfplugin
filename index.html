@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Parent Page</title>
+</head>
+<body>
+  <h2>Gửi dữ liệu text đến iframe</h2>
+
+  <textarea id="inputText" placeholder="Nhập text..."></textarea>
+  <button id="sendBtn">Gửi sang iframe</button>
+
+  <h3>Kết quả nhận lại từ iframe:</h3>
+  <div id="result"></div>
+
+  <!-- iframe -->
+  <iframe id="myIframe" src="iframe.html" width="400" height="200"></iframe>
+
+  <script>
+    const iframe = document.getElementById('myIframe');
+    const inputText = document.getElementById('inputText');
+    const result = document.getElementById('result');
+    const sendBtn = document.getElementById('sendBtn');
+
+    // Gửi dữ liệu sang iframe
+    sendBtn.addEventListener('click', () => {
+      const text = inputText.value;
+      iframe.contentWindow.postMessage(
+        { type: 'PROCESS_TEXT', text },
+        '*'
+      );
+    });
+
+    // Nhận dữ liệu trả về từ iframe
+    window.addEventListener('message', (event) => {
+      if (event.data?.type === 'PROCESSED_TEXT') {
+        result.textContent = event.data.result;
+      }
+    });
+  </script>
+</body>
+</html>
